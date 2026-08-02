@@ -27,7 +27,9 @@ A simple [Jyavani CMS](https://jyavani.com/) plugin that lets admins paste custo
 
 ## How it works
 
-The plugin stores the snippet in the CMS settings table and outputs it through the `jy_head` action, right before `</head>`.
+The plugin stores the snippet in the CMS settings table and outputs it through the `wp_head` action, right before `</head>`.
+
+> **Note for the Jyavani Plugin Store:** When uploading, build the ZIP from the plugin root so `plugin.json` is at the top level. Do not upload the auto-generated GitHub source ZIP, because it wraps everything in a subfolder.
 
 ## Security
 
