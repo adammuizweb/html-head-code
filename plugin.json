@@ -7,6 +7,7 @@
     "author_uri": "https://jyavani.com/member/adammuiz/",
     "plugin_uri": "https://jyavani.com/plugin/html-head-code/",
     "homepage": "https://jyavani.com/",
+    "github_url": "https://github.com/adammuizweb/html-head-code",
     "icon": "icon.png",
     "requires": {
         "php": ">=8.1",

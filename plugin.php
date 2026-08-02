@@ -21,7 +21,7 @@ function hhc_e(string $s): string {
     return htmlspecialchars($s, ENT_QUOTES, 'UTF-8');
 }
 
-add_action('jy_head', function (): void {
+add_action('wp_head', function (): void {
     $pdo = $GLOBALS['pdo'] ?? null;
     if (!($pdo instanceof PDO)) {
         return;
