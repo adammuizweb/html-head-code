@@ -1,0 +1,38 @@
+{
+    "name": "html-head-code",
+    "version": "1.0.0",
+    "title": "HTML Head Code",
+    "description": "Add custom HTML, scripts, or meta tags to the public \u003chead\u003e via CodeMirror.",
+    "author": "Adam Muiz",
+    "author_uri": "https://jyavani.com/member/adammuiz/",
+    "plugin_uri": "https://jyavani.com/plugin/html-head-code/",
+    "homepage": "https://jyavani.com/",
+    "icon": "icon.png",
+    "requires": {
+        "php": ">=8.1",
+        "extensions": ["pdo", "json"]
+    },
+    "admin": {
+        "pages": [
+            {
+                "route": "admin/tools/html-head-code",
+                "file": "admin/index.php",
+                "title": "HTML Head Code",
+                "roles": ["admin"]
+            }
+        ],
+        "nav": [
+            {
+                "label": "HTML Head Code",
+                "icon": "code",
+                "page": "admin/tools/html-head-code",
+                "parent": "tools",
+                "roles": ["admin"]
+            }
+        ]
+    },
+    "assets": {
+        "css": [],
+        "js": []
+    }
+}
