@@ -2,15 +2,14 @@
 // /plugins/html-head-code/admin/index.php
 declare(strict_types=1);
 
-if (!defined('PLUGIN_SYSTEM_LOADED')) {
-    return;
-}
+if (!defined('PLUGIN_SYSTEM_LOADED') || !defined('DASHBOARD_CONTEXT')) return;
 
 $pdo = $GLOBALS['pdo'] ?? null;
 if (!($pdo instanceof PDO)) {
-    echo '<p>Database not available.</p>';
+    if (function_exists('adiwira_render_404')) adiwira_render_404();
     return;
 }
+if (function_exists('adiwira_require_site_owner')) adiwira_require_site_owner($pdo, false);
 
 const HHC_HEAD_CODE_KEY = 'html_head_code';
 
@@ -21,8 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $token = (string)($_POST['csrf_token'] ?? '');
     if (function_exists('csrf_check') && !csrf_check($token)) {
         $error = 'Token keamanan tidak valid. Silakan muat ulang halaman.';
+    } elseif (!is_string($_POST['head_code'] ?? null)) {
+        $error = 'Head code tidak valid.';
+    } elseif (strlen($_POST['head_code']) > 262144) {
+        $error = 'Head code terlalu panjang.';
     } elseif (function_exists('settings_set')) {
-        $code = (string)($_POST['head_code'] ?? '');
+        $code = $_POST['head_code'];
         settings_set($pdo, HHC_HEAD_CODE_KEY, $code, 1);
         $success = true;
     } else {
